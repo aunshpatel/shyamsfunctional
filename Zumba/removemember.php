@@ -126,7 +126,7 @@
 					
 					echo "<script type='text/javascript'>";
 					echo "alert('Member successfully removed');"; 
-					echo "window.location.href='admin.html';";
+					echo "window.location.href='admin.php';";
 					echo "</script>";   
 				
 				} else {  

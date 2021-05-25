@@ -194,7 +194,7 @@ session_start();
 					
 				</div>
 				<div class="col-lg-8">
-					<form class="form-area contact-form text-right"  action="mail.php" method="post"><!--mail.php-->
+					<form class="form-area contact-form text-right" action="mail.php" method="post"><!--mail.php-->
 						<div class="row">
 							<div class="col-lg-6 form-group">
 								<input type="text" name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'"
@@ -208,6 +208,7 @@ session_start();
 								
 								<textarea name="message" class="common-textarea form-control" rows="10" cols="30" name="message" placeholder="Please Enter A Message" onfocus="this.placeholder = ''"
 								onblur="this.placeholder = 'Please Enter A Message'" oninvalid="setCustomValidity('Please enter your message')" required></textarea>
+								<b style="color:red;">All fields are required.</b>
 							</div>
 							<div class="col-lg-12">
 								<div class="alert-msg" style="text-align: left;"></div>

@@ -163,7 +163,7 @@
 					echo "<th class='head' scope='col'>Sr No</th>";
 					echo "<th class='head' scope='col'>Photo</th>";
 					echo "<th class='head' scope='col'>Name</th>";
-					echo "<th class='head' scope='col'>Weight (in kg/lbs)</th>";
+					echo "<th class='head' scope='col'>Weight (in lbs)</th>";
 					echo "<th class='head' scope='col'>Price (in INR)</th></tr></thead>";
 					while($row=mysqli_fetch_array($result,MYSQLI_ASSOC))
 					{

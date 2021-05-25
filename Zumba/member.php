@@ -151,7 +151,7 @@
 			echo "<tr align='center'><th colspan='11'>Your Personal Details</th></tr>";
 			echo "<tr align='center'><th>First Name</th>";
 			echo "<th>Last Name</th>";
-			echo "<th>DOB</th>";
+			echo "<th>Date of Birth</th>";
 			echo "<th>Joining Date</th>";
 			echo "<th>Height(in cm)</th>";
 			echo "<th>Weight(in kg)*</th>";
@@ -163,8 +163,16 @@
 			
 			while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
 			{
+				// Date of birth starts
+				$orgDate = $row['Birth_date'];  
+    			$newDate = date("d F, Y", strtotime($orgDate));
+				// Date of birth ends
+				// Date of join starts
+				$joinDate = $row['Join_date'];  
+    			$newJoinDate = date("d F, Y", strtotime($joinDate));
+				// Date of join ends
 				echo "<tr align='center'>";
-				echo "<td>".$row['First_name']."</td><td>".$row['Last_name']."</td><td>".$row['Birth_date'] ."</td><td>".$row['Join_date'] ."</td><td>".$row['Height'] ."</td><td>".$row['Weight'] ."</td><td>".$row['Gender']."</td><td>".$row['Country_Code']."</td><td>".$row['Mobile_no']."</td><td>".$row['Email']."</td><td>".$row['Password']."</td>";					
+				echo "<td>".$row['First_name']."</td><td>".$row['Last_name']."</td><td>". $newDate ."</td><td>". $newJoinDate ."</td><td>".$row['Height'] ."</td><td>".$row['Weight'] ."</td><td>".$row['Gender']."</td><td>".$row['Country_Code']."</td><td>".$row['Mobile_no']."</td><td>".$row['Email']."</td><td>".$row['Password']."</td>";					
 				echo "</tr>"; //Country_Code='$cc',
 				
 			}

@@ -36,78 +36,77 @@
     <link rel="stylesheet" href="css/style1.css">
 	<style>
 		#myBtn {
-		
-		position: fixed;
-		bottom: 10px;
-		right: 10px;
-		z-index: 99;
-		font-size: 18px;
-		border: none;
-		outline: none;
-		background-color: #2c5abd;
-		color: white;
-		cursor: pointer;
-		padding: 15px;
-		border-radius: 4px;
-	}
-	#myBtn:hover {
-	  background-color: #555;
-	}
-	#loader {
-		position: fixed;
-		left: 45%;
-		top: 45%;
-		z-index: 1;
-		width: 100%;
-		height: 100%;
-		margin: -75px 0 0 -75px;
-		border: 16px solid #f3f3f3;
-		border-radius: 50%;
-		border-top: 16px solid blue;
-		border-right: 16px solid green;
-		border-bottom: 16px solid red;
-		border-left: 16px solid pink;
-		width: 220px;
-		height: 220px;
-		-webkit-animation: spin 2s linear infinite;
-		animation: spin 2s linear infinite;
-		
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: #2c5abd;
+			color: white;
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 4px;
+		}
+		#myBtn:hover {
+			background-color: #555;
+		}
+		#loader {
+			position: fixed;
+			left: 45%;
+			top: 45%;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			margin: -75px 0 0 -75px;
+			border: 16px solid #f3f3f3;
+			border-radius: 50%;
+			border-top: 16px solid blue;
+			border-right: 16px solid green;
+			border-bottom: 16px solid red;
+			border-left: 16px solid pink;
+			width: 220px;
+			height: 220px;
+			-webkit-animation: spin 2s linear infinite;
+			animation: spin 2s linear infinite;
+			
 		}
 
 		@-webkit-keyframes spin {
-		0% { -webkit-transform: rotate(0deg); }
-		100% { -webkit-transform: rotate(360deg); }
+			0% { -webkit-transform: rotate(0deg); }
+			100% { -webkit-transform: rotate(360deg); }
 		}
 
 		@keyframes spin {
-		0% { transform: rotate(0deg); }
-		100% { transform: rotate(360deg); }
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
 		}
 
 		/* Add animation to "page content" */
 		.animate-bottom {
-		position: relative;
-		-webkit-animation-name: animatebottom;
-		-webkit-animation-duration: 1s;
-		animation-name: animatebottom;
-		animation-duration: 1s
+			position: relative;
+			-webkit-animation-name: animatebottom;
+			-webkit-animation-duration: 1s;
+			animation-name: animatebottom;
+			animation-duration: 1s
 		}
 
 		@-webkit-keyframes animatebottom {
-		from { bottom:-100px; opacity:0 } 
-		to { bottom:0px; opacity:1 }
+			from { bottom:-100px; opacity:0 } 
+			to { bottom:0px; opacity:1 }
 		}
 
 		@keyframes animatebottom { 
-		from{ bottom:-100px; opacity:0 } 
-		to{ bottom:0; opacity:1 }
+			from{ bottom:-100px; opacity:0 } 
+			to{ bottom:0; opacity:1 }
 		}
 
 		#myDiv {
-		display: none;
-		text-align: center;
+			display: none;
+			text-align: center;
 		}
-		</style>
+	</style>
 </head>
 
 <body onload="myFunction()" style="margin:0;">
@@ -192,14 +191,22 @@
             <input type="text" name="position" placeholder="Enter position please" required>
         </div>
 		<div class="input-group">
-			<!-- </div>
-			<div class="input-group"> -->
-            
-        
-			<label>Mobile Number:</label>&nbsp;
-			<!-- <input type="text" maxlength="7" style="width: 30%" name="country_code" placeholder="Country code"  oninvalid="setCustomValidity('Please entercountry code in proper way')" required>  -->
-			<?php include 'country-code.html';?>
-            <input type="text" style="width:80%" name="mobile" pattern="[0-9]{10}" placeholder="Enter mobile number please" required>
+			<b><label style="color:black;">Mobile Number:</label></b>
+			<br/>
+			<table>
+				<tr>
+					<td style="width:36%;">
+						<?php include 'country-code.html';?>
+					</td>
+
+					<td style="width:64%;">
+						<!-- <input type="text" maxlength="7" style="width: 30%" name="country_code" placeholder="Country code"  oninvalid="setCustomValidity('Please enter country code in proper way')" required> -->
+						<input type="text" name="mobile" pattern="[0-9]{10}" oninvalid="setCustomValidity('Make sure to enter 10 digits only')" placeholder="Your mobile number" required>
+						<!-- style="width: 66%" -->
+					</td>
+				</tr>
+			</table>
+			<br/>
 		</div>
 		<div class="input-group">
             <label>Email:</label>

@@ -224,7 +224,8 @@
 		<hr style=" background-color: black !important;  color: black !important;  border: solid 1px black !important;"/>
 		<h3>Queries:</h3>
         <h4>
-			<a href="queries.php">View Queries Of People</a><br/><br/>
+			<a href="queries.php">View Queries Of People</a><br/>
+			<a href="removequery.php">Delete Queries</a><br/><br/>
 		</h4> 
 
         </div>

@@ -145,7 +145,8 @@
 		<?php
 			$conn=mysqli_connect('localhost','root','','project') or die($mysqli_error); 
 			//mysql_select_db('project') or die("Can't select database");            
-			$query= "SELECT First_name,Last_name,Birth_date,Join_date,Height,Weight,Gender,Country_Code,Mobile_no,Email FROM member";
+			$query= "SELECT * FROM member";
+			// First_name,Last_name,Birth_date,Join_date,Height,Weight,Gender,Country_Code,Mobile_no,Email
 			$result=mysqli_query($conn,$query);
 
 			// $conn=mysqli_connect('localhost','root','','project') or die($mysqli_error);  
@@ -166,10 +167,13 @@
 			echo "<th class='head' scope='col'>Mobile Number</th>";
 			echo "<th class='head' scope='col'>Email</th></tr>";
 			echo "</thead>";
+			
 			while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
 			{
+				$orgDate = $row['Birth_date'];  
+    			$newDate = date("d F, Y", strtotime($orgDate));
 				echo "<tbody><tr align='center'>";
-				echo "<td>".$row['First_name']."</td><td>".$row['Last_name']."</td><td>".$row['Birth_date'] ."</td><td>".$row['Height'] ."</td><td>".$row['Weight'] ."</td><td>".$row['Gender'] ."</td><td>".$row['Country_Code'] ."</td><td>".$row['Mobile_no']."</td><td>".$row['Email']."</td>";					
+				echo "<td>".$row['First_name']."</td><td>".$row['Last_name']."</td><td>". $newDate ."</td><td>".$row['Height'] ."</td><td>".$row['Weight'] ."</td><td>".$row['Gender'] ."</td><td>".$row['Country_Code'] ."</td><td>".$row['Mobile_no']."</td><td>".$row['Email']."</td>";					
 				echo "</tbody></tr>";
 			}
 			echo "</table>";
@@ -181,9 +185,9 @@
 	</section>
 	<!-- End Features Area -->
 
-		<!-- start footer Area -->
-		<?php include 'footer.html'?>
-		<!-- End footer Area -->
+	<!-- start footer Area -->
+	<?php include 'footer.html'?>
+	<!-- End footer Area -->
 
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>

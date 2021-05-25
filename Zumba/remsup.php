@@ -115,12 +115,14 @@
 	<?php
 		if(isset($_REQUEST["rem"]))
 		{ 				 
+			$wght=$_REQUEST['weight']; 
+			$nm=$_REQUEST['supplement'];
 			$conn=mysqli_connect('localhost','root','','project') or die($mysqli_error);  
   
 			//mysqli_select_db('project') or die("Can't select database");  
-			$sql="DELETE FROM supplements WHERE Name='$nm'";  
+			$sql="DELETE FROM supplements WHERE Name='$nm' AND Weight='$wght'";  
 
-			$result=mysqli_query($sql,$conn);  
+			$result=mysqli_query($conn,$sql);  
 			if($result){ 
 				
 				echo "<script type='text/javascript'>";
@@ -130,8 +132,8 @@
 			
 			} else {  
 				echo "<script type='text/javascript'>";
-				echo "alert('Sorry, the supplement is not removed. Please try again with a proper name');"; 
-				echo "window.location.href='remsup.php';";
+				echo "alert('Sorry, the supplement is not removed. Please try again with correct details');"; 
+				// echo "window.location.href='remsup.php';";
 				echo "</script>";
 			}  
 		}
@@ -170,9 +172,16 @@
   	
         <div class="input-group">
             <label>Name of Supplement:</label>
+		</div>
+		<div class="input-group">
             <input type="text" name="supplement" placeholder="Enter supplement name" required>
         </div>
-        
+        <div class="input-group">
+            <label>Weight of Supplement (in KG):</label>
+		</div>
+		<div class="input-group">
+            <input type="text" name="weight" placeholder="Enter supplement weight" required>
+        </div>
         <div class="input-group" >
             <button type="submit" class="btn" name="rem">Remove Supplement</button>   
             

@@ -18,7 +18,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>View Admin Page</title>
+	<title>Delete Query Page</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--
@@ -55,8 +55,8 @@
 	}
 	#loader {
 		position: fixed;
-		left: 50%;
-		top: 50%;
+		left: 45%;
+		top: 45%;
 		z-index: 1;
 		width: 100%;
 		height: 100%;
@@ -111,13 +111,12 @@
 </head>
 
 <body onload="myFunction()" style="margin:0;">
-	<div id="loader"></div>
-	   
+	<div id="loader"></div> 
 	<div style="display:none;" id="myDiv" class="animate-bottom">
 	<button onclick="parent.location='bot.php'" id="myBtn" title="Go to Chat Bot">Chat With Spencer</button>
-	<!-- start header Area -->
+	<!-- start header area -->
 	<?php include 'header.html';?>
-	<!-- end header Area -->
+	<!-- End header area -->
 
 	<!-- start banner Area -->
 	<section class="banner-area relative about-banner" id="home">
@@ -127,9 +126,9 @@
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
 					<h1>
-						Admin Details
+						Delete Query
 					</h1>
-					
+					<p>Delete the query using below given form</p>
 				</div>
 			</div>
 		</div>
@@ -139,40 +138,60 @@
 	<!-- Start Features Area -->
 	<section class="feature-area courses section-gap">
     
-    <center>
-	<h3>Here is a list of all admin members:</h3><br/>
-	<?php
-		$conn=mysqli_connect('localhost','root','','project') or die($mysqli_error);  
-		// mysql_select_db('project') or die("Can't select database");            
-		$query= "SELECT First_name,Last_name,Position,Country_Code,Mobile,Email FROM admin";
-		$result=mysqli_query($conn,$query);
-		echo "<font color='black'>";
-		echo "<table class='schdule-table table table-bordered'> <thead class='thead-light' align='center'>";
-		echo "<tr><th class='head' scope='col' colspan='6'>Admin Details</th></tr>";
-		echo "<tr><th class='head' scope='col'>First Name</th>";
-		echo "<th class='head' scope='col'>Last Name</th>";
-		echo "<th class='head' scope='col'>Position</th>";
-		echo "<th class='head' scope='col'>Country Code</th>";
-		echo "<th class='head' scope='col'>Mobile Number</th>";
-		echo "<th class='head' scope='col'>Email</th></tr>";
-		echo "</thead>";
-		while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-		{
-			echo "<tbody><tr align='center'>";
-			echo "<td>".$row['First_name']."</td><td>".$row['Last_name']."</td><td>".$row['Position'] ."</td><td>".$row['Country_Code'] ."</td><td>".$row['Mobile']."</td><td>".$row['Email']."</td>";					
-			echo "</tbody></tr>";
-		}
-		echo "</table>";
-		echo "</font>";
-	?>
-    <center>
-	</section>
+    <div class="header">
+  	    <h2>Delete Query</h2>
+    </div>
+	<h3>Delete Queries<br/></h3>
+    <form method="POST" action="">
+        <div class="input-group">
+            <label>Email id:</label>
+        </div>
+        <div class="input-group">
+            <input type="email" name="em" class="common-input mb-10 form-control" placeholder="Enter email please" pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,5})+$/" oninvalid="setCustomValidity('Please check again and enter the email properly')" required>
+        </div>
+        <div class="input-group">    
+            <label>Date:</label>
+        </div>
+        <div class="input-group">
+            <input type="date" name="date" onfocus="(this.type='date')" onblur="(this.type='text')" class="common-input mb-10 form-control" required>
+        </div>
+        
+        <div class="input-group" >
+            <button type="submit" class="btn" name="remove">Remove Query</button> 
+        </div>
+        <?php
+        {  
+            if(isset($_REQUEST["remove"])){ 
+                $em=$_REQUEST['em']; 
+                $dt=$_REQUEST['date'];
+                $conn=mysqli_connect('localhost','root','','project') or die($mysqli_error);  
+
+                //mysqli_select_db('project') or die("Can't select database");  
+                $sql="DELETE FROM query WHERE Email='$em' AND Date='$dt'";  
+
+                $result=mysqli_query($conn,$sql);  
+                if($result){ 
+                    
+                    echo "<script type='text/javascript'>";
+                    echo "alert('Query successfully removed');"; 
+                    echo "window.location.href='admin.php';";
+                    echo "</script>";   
+                
+                } else {  
+                    echo "<script type='text/javascript'>";
+                    echo "alert('Query not removed, please enter valid data');"; 
+                    echo "window.location.href='removequery.php';";
+                    echo "</script>";
+                }  
+            }
+        }  
+    ?> 
+    </form></section>
 	<!-- End Features Area -->
 
 	<!-- start footer Area -->
 	<?php include 'footer.html'?>
 	<!-- End footer Area -->
-
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"

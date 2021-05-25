@@ -11,7 +11,7 @@
 
 			//mysqli_select_db('project');  
 			$sql="INSERT INTO query(Date,Name,Email,Subject,Message) VALUES('$dt','$nm','$em','$subj','$mess')";
-			$result=mysqli_query($sql,$conn);  
+			$result=mysqli_query($conn,$sql);  
 			if($result)  
 			{  
 				echo "<script type='text/javascript'>";

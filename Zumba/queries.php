@@ -139,43 +139,42 @@
 
 	<!-- Start Features Area -->
 	<section class="feature-area courses section-gap">
-    
-    <center>
-	<h3>Here is a list of the queries people have:</h3><br/>
-    <div class="row justify-content-center">
-    <div class="table-wrap col-lg-10">
-	<?php
-			
-            $conn=mysqli_connect('localhost','root','','project') or die($mysqli_error); 
-  
-            //mysqli_select_db('project') or die("Can't select database");            
-            $query= "SELECT * FROM query";
-			$result=mysqli_query($conn,$query);
-			echo "<font color='black'>";
-            echo "<table class='schdule-table table table-bordered'> <thead class='thead-light' align='center'>";
-            echo "<tr ><th class='head' scope='col' colspan='6' align='center'>Queries</th></tr>";
-			echo "<tr><th class='head' scope='col'>Sr No</th>";
-			echo "<th class='head' scope='col'>Date</th>";
-			echo "<th class='head' scope='col'>Name</th>";
-			echo "<th class='head' scope='col'>Email</th>";
-			echo "<th class='head' scope='col'>Subject</th>";
-            echo "<th class='head' scope='col'>Message</th>";
-            echo "</thead>";
-            
-            while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
-            {
-                echo "<tbody><tr align='center'>";
-                echo "<td>".$row['Sr_no']."</td><td>".$nice_date = date('j F, Y', strtotime( $row['Date'] ))."</td><td>".$row['Name']."</td><td>".$row['Email']."</td><td>".$row['Subject'] ."</td><td>".$row['Message'] ."</td>";					
-				// ;
-				// $row['Date']
-				echo "</tr></tbody>";
-            }
-            echo "</table>";
-            echo "</font>";
-	?>
-    </div>
-
-    <center>
+		<center>
+			<h3>Here is a list of the queries people have:</h3><br/>
+			<div class="row justify-content-center">
+				<div class="table-wrap col-lg-10">
+					<?php		
+							$conn=mysqli_connect('localhost','root','','project') or die($mysqli_error); 
+							//mysqli_select_db('project') or die("Can't select database");            
+							$query= "SELECT * FROM query";
+							$result=mysqli_query($conn,$query);
+							echo "<font color='black'>";
+							echo "<table class='schdule-table table table-bordered'> <thead class='thead-light' align='center'>";
+							echo "<tr ><th class='head' scope='col' colspan='6' align='center'>Queries</th></tr>";
+							// echo "<tr><th class='head' scope='col'>Sr No</th>";
+							echo "<th class='head' scope='col'>Date</th>";
+							echo "<th class='head' scope='col'>Name</th>";
+							echo "<th class='head' scope='col'>Email</th>";
+							echo "<th class='head' scope='col'>Subject</th>";
+							echo "<th class='head' scope='col'>Message</th>";
+							echo "</thead>";
+							
+							while($row = mysqli_fetch_array($result,MYSQLI_ASSOC))
+							{
+								echo "<tbody><tr align='center'>";
+								echo "<td>".$nice_date = date('j F, Y', strtotime( $row['Date'] ))."</td><td>".$row['Name']."</td><td>".$row['Email']."</td><td>".$row['Subject'] ."</td><td>".$row['Message'] ."</td>";					
+								// "<td>".$row['Sr_no']."</td>;
+								// $row['Date']
+								echo "</tr></tbody>";
+							}
+							echo "</table>";
+							echo "</font>";
+					?>
+				</div>
+			</div>
+			<br/>
+			<h3><a href="removequery.php">To Delete Queries, Cick Here</a><br/></h3>
+		</center>
 	</section>
 	<!-- End Features Area -->
 
